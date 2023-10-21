@@ -29,11 +29,11 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
     }
 
     if (field === 'tags') {
-      items[field] = data.tags || []; // Extract the "tags" field from front matter
+      items[field] = data.tags || []; 
     }
 
     if (field === 'author') {
-      items[field] = data.author.handle || ''; // Extract the "author" field from front matter
+      items[field] = data.author.handle || '';
     }
 
     // Include other dynamic metadata fields as needed
