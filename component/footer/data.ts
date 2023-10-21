@@ -1,0 +1,1 @@
+export const copyright = `Copyright © ${new Date().getFullYear()} WSYNC. All Rights Reserved.`
