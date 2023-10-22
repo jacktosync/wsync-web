@@ -1,4 +1,4 @@
-import { Image, Stack, Text, Box, Skeleton, Button, useBreakpointValue, useColorModeValue, Heading, IconProps, Icon, Flex, Spacer } from '@chakra-ui/react'
+import { Image, Stack, Text, Box, Skeleton, Button, useBreakpointValue, useColorModeValue, Heading, IconProps, Icon, Flex, Spacer, useColorMode } from '@chakra-ui/react'
 
 type Props = {
     title: string
@@ -18,12 +18,14 @@ const RepoHeroCard = ({
     price,
     demo,
 }: Props) => {
+    const { colorMode } = useColorMode();
     return (
         <Box
-            bgImage={{ base: 'none', md: 'url(/content/bg-hero-repo-card.svg)' }}
+            bgImage={colorMode === 'light' ? ({ base: 'none', md: 'url(/content/bg-hero-repo-card-light.svg)' }) : ({ base: 'none', md: 'url(/content/bg-hero-repo-card-dark.svg)' })}
             bgSize={'contain'}
             bgRepeat={'no-repeat'}
-            py={10}
+            pt={16}
+            pb={10}
             px={5}
             bgPosition="top right"
         >

@@ -7,7 +7,23 @@ import type RepoType from '@/interfaces/repo'
 import Repo from '@/interfaces/repo'
 import Navbar from '@/component/navbar'
 import Footer from '@/component/footer'
-import { Stack, Text, Image, Box, Heading, Flex, useBreakpointValue, useColorModeValue, IconProps, Icon, Skeleton, Button, Spacer, Divider } from '@chakra-ui/react'
+import {
+    Stack,
+    Text,
+    Image,
+    Box,
+    Heading,
+    Flex,
+    useBreakpointValue,
+    useColorModeValue,
+    IconProps,
+    Icon,
+    Skeleton,
+    Button,
+    Spacer,
+    Divider,
+    useColorMode
+} from '@chakra-ui/react'
 import DateFormatter from '@/component/DateFormatter'
 import RepoBody from '@/component/RepoBody'
 import RepoPostCard from '@/component/RepoPostCard'
@@ -19,6 +35,7 @@ type Props = {
 
 
 export default function Repository({ repo, relatedRepo }: Props) {
+    const { colorMode } = useColorMode();
     const router = useRouter()
     if (!router.isFallback && !repo?.slug) {
         return <ErrorPage statusCode={404} />
@@ -36,7 +53,7 @@ export default function Repository({ repo, relatedRepo }: Props) {
                         <meta name="description" content={repo.excerpt} />
                         <meta name="keywords" content={repo.tags.toString()} />
                         <meta name="viewport" content="width=device-width, initial-scale=1" />
-                        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="48x48"/>
+                        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="48x48" />
                         <link rel="manifest" href="/manifest.json" />
                         <link rel="canonical" href={`/portfolio/${repo.slug}`} />
                         <meta property="og:site_name" content="WSYNC" />
@@ -53,11 +70,11 @@ export default function Repository({ repo, relatedRepo }: Props) {
                     </Head>
                     <Navbar />
                     <Box
-                        bgImage={'url(/content/bg-hero-slug-card.svg)'}
+                        bgImage={colorMode === 'light' ? ({ base: 'none', md: 'url(/content/bg-hero-repo-card-light.svg)' }) : ({ base: 'none', md: 'url(/content/bg-hero-repo-card-dark.svg)' })}
                         bgSize={'contain'}
                         bgRepeat={'no-repeat'}
-                        mt={10}
-                        py={10}
+                        pt={16}
+                        pb={10}
                         px={5}
                         bgPosition="top right"
                     >
@@ -80,7 +97,7 @@ export default function Repository({ repo, relatedRepo }: Props) {
                             </Text>
                         </Stack>
                     </Box>
-                    <Divider mx={5} display={{base: 'none', md: 'block'}} maxWidth={'600px'} />
+                    <Divider mx={5} display={{ base: 'none', md: 'block' }} maxWidth={'475px'} />
                     <Blur
                         position={'absolute'}
                         top={-10}

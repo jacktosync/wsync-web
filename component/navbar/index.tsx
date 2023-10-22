@@ -134,7 +134,9 @@ export default function Navbar() {
                             {navMenu.map((nav, index) => (
                                 <HStack p={5} width="100%" py={2} key={index} direction="column">
                                     <Flex gap={4} direction="row" align="center">
+                                        {/* eslint-disable-next-line react-hooks/rules-of-hooks */}
                                         <Icon fill={useColorModeValue('#34a853', 'goldenrod')} fontSize={'2rem'}>{nav.icon}</Icon>
+                                        {/* eslint-disable-next-line react-hooks/rules-of-hooks */}
                                         <Text title={nav.name} _hover={{color: useColorModeValue('#34a853', 'goldenrod')}} fontWeight={'bold'} fontSize={'1.5rem'} as="a" href={nav.link}>
                                             {nav.name}
                                         </Text>
